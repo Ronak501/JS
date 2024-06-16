@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronak's World</title>
+</head>
+<body>
+    <ul>
+        <li>Ronak</li>
+    </ul>
+</body>
+<script>
+    function ronak(lan){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(lan));
+        document.querySelector('ul').appendChild(li);
+    }
+
+    ronak('java');
+    ronak('c++');
+    ronak('python');
+</script>
+</html>
