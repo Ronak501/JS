@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 200px;
+        }
+
+        img{
+            height: 150px;
+            width: 150px;
+            position: relative;
+            left: 30px;
+        }
+
+        .photo{
+            background-color: rgb(175, 29, 29);
+            height: 250px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #follow{
+            position: relative;
+            left: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo">
+        <p id="follow"></p>
+    </div>
+    <script>
+        const photo = document.querySelector(".photo");
+        const follow = document.getElementById("follow");
+        const img = document.createElement("img");
+
+        const ReqUrl = 'https://api.github.com/users/ronak501';
+        
+        const xhr = new XMLHttpRequest()
+        xhr.open('get',ReqUrl);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                const data = JSON.parse(this.responseText)
+                const link = data.avatar_url;
+                img.src = `${link}`;
+                photo.appendChild(img);
+                follow.innerHTML = `Name: ${data.name}
+                                    <br><br>
+                                    Id: ${data.login}
+                                    <br><br>
+                                    Followers   : ${data.followers}
+                                    <br><br>
+                                    Following: ${data.following}`;
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>
