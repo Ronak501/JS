@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronak's world</title>
+</head>
+<body>
+    <!-- <h1>Ronak's Home</h1> -->
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const start = document.querySelector('#start');    
+    const stop = document.querySelector('#stop');    
+
+    let startC;
+    // console.log(!startC);
+    const changeMe = function(){
+        if(startC === null || startC === undefined){
+            startC = setInterval(change, 1000);
+        
+            function change(){
+                let time = new Date;
+                let ronak = time.toLocaleTimeString()
+                console.log("Ronak's World Time:", ronak);
+            }
+        }
+    }
+
+    const notChangeMe = function(){
+        clearInterval(startC);
+        startC = null;
+    }
+
+    start.addEventListener("click", changeMe);
+    stop.addEventListener('click', notChangeMe);
+</script>
+</html>
