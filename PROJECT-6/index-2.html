@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronak's world</title>
+</head>
+<body>
+    <!-- <h1>Ronak's Home</h1> -->
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const start = document.querySelector('#start');    
+    const stop = document.querySelector('#stop');    
+    
+    const randomColor = function(){
+        const hex = "0123456789ABCDEF"
+        let color = "#"
+
+        for(let i=1;i<=6;i++){
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+    let startC;
+    const changeMe = function(){
+        if(!startC){
+        startC = setInterval(change, 500);
+        }
+        function change(){
+        document.body.style.backgroundColor = randomColor();
+        }
+    }
+
+    const notChangeMe = function(){
+        clearInterval(startC);
+        // console.log("ronak");
+        startC = null;
+    }
+
+    start.addEventListener("click", changeMe);
+
+    stop.addEventListener('click', notChangeMe);
+</script>
+</html>
